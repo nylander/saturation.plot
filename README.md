@@ -1,6 +1,6 @@
 # Saturation plots - P-dist vs. Tree-dist
 
-- Last modified: tis feb 20, 2024  05:54
+- Last modified: tis feb 20, 2024  05:57
 - Sign: JN
 
 ![Saturation plots](img/plots.png)
@@ -16,7 +16,6 @@ phylogenetic tree.
 
 [R](https://www.r-project.org/) with R-package
 [ape](https://cloud.r-project.org/web/packages/ape/index.html).
-
 Recently tested with R v4.3.2 and ape v5.7.1.
 
 ## Input
@@ -34,11 +33,11 @@ Recently tested with R v4.3.2 and ape v5.7.1.
     > par(mfrow=c(2, 2))
     > saturation.plot(phy, dna, main="default")
     > saturation.plot(phy, dna, main="no box or regression",
-                    bg=FALSE, reg=FALSE)
+                      bg=FALSE, reg=FALSE)
     > saturation.plot(phy, dna, main="change some settings",
-                    bg=FALSE, col="red", xlim=c(15, 75),
-                    ylim=c(0, 0.16), cex=0.5)
+                      bg=FALSE, col="red", xlim=c(15, 75),
+                      ylim=c(0, 0.16), cex=0.5)
     > saturation.plot(phy, dna, main="other colors and symbols",
-                    bg=TRUE, col="yellow", bg.col="darkgray",
-                    pch=24, cex=1.5)
+                      bg=TRUE, col="yellow", bg.col="darkgray",
+                      pch=24, cex=1.5)
 
