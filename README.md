@@ -1,6 +1,6 @@
 # Saturation plots - P-dist vs. Tree-dist
 
-- Last modified: tis feb 20, 2024  05:48
+- Last modified: tis feb 20, 2024  05:54
 - Sign: JN
 
 ![Saturation plots](img/plots.png)
@@ -8,8 +8,9 @@
 ## Description
 
 Code for generating saturation plots used in [Klopfstein et al.,
-2013](doi:10.1371/journal.pone.0069344) for displaying the relationship between
-the uncorrected (P-) distance and the distance on a phylogenetic tree.
+2013](https://doi.org/10.1371/journal.pone.0069344) for displaying the
+relationship between the uncorrected (P-) distance and the distance on a
+phylogenetic tree.
 
 ## Requirements
 
