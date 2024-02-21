@@ -1,10 +1,11 @@
-"saturation.plot" <- function(phy, dna, regression=TRUE, bg=TRUE, pch=NULL,
-                            bg.col="black", col=NULL, xlab="Distance on tree",
-                            ylab="p-distance", ...) {
+"saturation.plot" <- function(phy, dna, regression=TRUE, bg=FALSE, pch=NULL,
+                              bg.col="black", col=NULL, reg.col=NULL,
+                              xlab="Distance on tree", ylab="p-distance",
+                              add=FALSE, ...) {
 
   ## Saturation plot: Uncorrected P-distance vs distance on tree.
   ## By: Seraina Klopstein, 2012 (modified by Johan Nylander, 2013)
-  ## Last modified: tis feb 20, 2024  05:42
+  ## Last modified: ons feb 21, 2024  09:06
 
   require("ape")
 
@@ -54,19 +55,33 @@
     if(is.null(col)) {
       col <- "white"
     }
-    plot(distTable[, 2], distTable[, 1], type="n", xlab=xlab, ylab=ylab, ...)
+    if(is.null(reg.col)) {
+      reg.col <- col
+    }
+    if( add == TRUE) {
+      lines(distTable[, 2], distTable[, 1], type="n", xlab=xlab, ylab=ylab, ...)
+    } else {
+      plot(distTable[, 2], distTable[, 1], type="n", xlab=xlab, ylab=ylab, ...)
+    }
     rect(par("usr")[1], par("usr")[3], par("usr")[2], par("usr")[4], col=bg.col)
     points(distTable[, 2], distTable[, 1], type="p", col=col, pch=pch)
     if (regression == TRUE) {
-      abline(fit, col=col, ...)
+      abline(fit, col=reg.col, ...)
     }
   } else {
     if(is.null(col)) {
       col <- "black"
     }
-    plot(distTable[, 2], distTable[, 1], type="p", xlab=xlab, ylab=ylab, col=col, pch=pch, ...)
+    if(is.null(reg.col)) {
+      reg.col <- col
+    }
+    if(add == TRUE) {
+      lines(distTable[, 2], distTable[, 1], type="p", xlab=xlab, ylab=ylab, col=col, pch=pch, ...)
+    } else {
+      plot(distTable[, 2], distTable[, 1], type="p", xlab=xlab, ylab=ylab, col=col, pch=pch, ...)
+    }
     if (regression == TRUE) {
-      abline(fit, col=col, ...)
+      abline(fit, col=reg.col, ...)
     }
   }
   invisible(distTable)
