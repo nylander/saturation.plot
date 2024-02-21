@@ -52,13 +52,13 @@
     pch <- 20
   }
   if (bg == TRUE) {
-    if(is.null(col)) {
+    if (is.null(col)) {
       col <- "white"
     }
-    if(is.null(reg.col)) {
+    if (is.null(reg.col)) {
       reg.col <- col
     }
-    if( add == TRUE) {
+    if ( add == TRUE) {
       lines(distTable[, 2], distTable[, 1], type="n", xlab=xlab, ylab=ylab, ...)
     } else {
       plot(distTable[, 2], distTable[, 1], type="n", xlab=xlab, ylab=ylab, ...)
@@ -72,10 +72,10 @@
     if(is.null(col)) {
       col <- "black"
     }
-    if(is.null(reg.col)) {
+    if (is.null(reg.col)) {
       reg.col <- col
     }
-    if(add == TRUE) {
+    if (add == TRUE) {
       lines(distTable[, 2], distTable[, 1], type="p", xlab=xlab, ylab=ylab, col=col, pch=pch, ...)
     } else {
       plot(distTable[, 2], distTable[, 1], type="p", xlab=xlab, ylab=ylab, col=col, pch=pch, ...)
