@@ -1,19 +1,26 @@
 "saturation.plot" <- function(phy, dna, regression=TRUE, bg=FALSE, pch=NULL,
                               bg.col="black", col=NULL, reg.col=NULL,
                               xlab="Distance on tree", ylab="p-distance",
-                              add=FALSE, ...) {
+                              brlen=NULL, add=FALSE, ...) {
 
   ## Saturation plot: Uncorrected P-distance vs distance on tree.
   ## By: Seraina Klopstein, 2012 (modified by Johan Nylander, 2013)
-  ## Last modified: ons feb 21, 2024  09:06
+  ## Last modified: mån feb 26, 2024  03:52
 
   require("ape")
 
-  if (!inherits(phy, "phylo")) {
-    stop("object 'phy' is not of class 'phylo'")
-  }
   if (!inherits(dna, "DNAbin")) {
-    stop("object 'dna' is not of class 'DNAbin'")
+    stop("Error: object 'dna' is not of class 'DNAbin'")
+  }
+  if (!inherits(phy, "phylo")) {
+    stop("Error: object 'phy' is not of class 'phylo'")
+  }
+  if (any(is.nan(phy$edge.length))) {
+    if (!is.null(brlen)) {
+      phy$edge.length <- ifelse(is.nan(phy$edge.length), brlen, phy$edge.length)
+    } else {
+      stop("Error: object 'phy' does have 'NaN' as branch length(s). You may use the 'brlen' option to override missing values.")
+    }
   }
   if (!is.matrix(dna)) {
     dna <- as.matrix(dna)
