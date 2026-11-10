@@ -1,0 +1,18 @@
+Package: saturation.plot
+Type: Package
+Title: Plot Sequence Divergence Against Phylogenetic Distance
+Version: 0.1.0
+Authors@R: c(
+    person("Seraina", "Klopfstein", role = "aut"),
+    person("Johan", "Nylander",
+        email = "johan.nylander@nrm.se",
+        role = c("aut", "cre")))
+Description: Generate saturation plots comparing uncorrected sequence
+    distances with patristic distances from a phylogenetic tree.
+    Optionally display a fitted linear regression.
+License: GPL-3
+Encoding: UTF-8
+Imports:
+    ape,
+    graphics,
+    stats
