@@ -3,12 +3,6 @@
                               xlab="Distance on tree", ylab="p-distance",
                               brlen=NULL, add=FALSE, ...) {
 
-  ## Saturation plot: Uncorrected P-distance vs distance on tree.
-  ## By: Seraina Klopstein, 2012 (modified by Johan Nylander, 2013)
-  ## Last modified: mån feb 26, 2024  03:52
-
-  require("ape")
-
   if (!inherits(dna, "DNAbin")) {
     stop("Error: object 'dna' is not of class 'DNAbin'")
   }
@@ -25,7 +19,6 @@
   if (!is.matrix(dna)) {
     dna <- as.matrix(dna)
   }
-  ## Sort sequences according to taxon names in tree file
   sortingSeq <- match(phy$tip.label, dimnames(dna)[[1]])
   dna <- dna[sortingSeq, ]
   pDist <- dist.dna(dna, model="raw", as.matrix=FALSE, pairwise.deletion=TRUE)
@@ -47,14 +40,11 @@
     }
     counter2 <- counter2 + 1
   }
-  ## Fill matrix with pairs, divide distance by two
   for (i in 1:nbPairs) {
     distTable[i, 1] <- pDist[i] / 2
     distTable[i, 2] <- MBDist[which(helpMatrix[] == i)] / 2
   }
-  ## Linear regression
   fit <- lm(distTable[, 1] ~ distTable[, 2])
-  ## Plotting, black background or not, regression or not
   if (is.null(pch)) {
     pch <- 20
   }
